@@ -67,7 +67,14 @@ var jbImagesDialog = {
 			document.getElementById("upload_in_progress").style.display = 'none';
 			document.getElementById("upload_infobar").style.display = 'block';
 			document.getElementById("upload_infobar").innerHTML = tinyMCEPopup.getLang('jbimages_dlg.upload_complete', 0);
-			tinyMCEPopup.editor.execCommand('mceInsertContent', false, '<img src="' + result.filename +'" />');
+			var sizing = "";
+			if (result.viewer_width != -1) {
+				sizing += ' width="' + result.viewer_width + '"';
+			}
+			if (result.viewer_height != -1) {
+				sizing += ' height="' + result.viewer_height + '"';
+			}
+			tinyMCEPopup.editor.execCommand('mceInsertContent', false, '<img src="' + result.filename +'"' + sizing + ' />');
 			tinyMCEPopup.close();
 		}
 	}

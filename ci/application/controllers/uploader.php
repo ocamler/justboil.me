@@ -65,6 +65,8 @@ class Uploader extends CI_Controller {
 				$conf['allow_resize'] = FALSE;
 			}
 		}
+		$conf['max_viewer_width']		= $this->config->item('max_viewer_width',		'uploader_settings');
+		$conf['max_viewer_height']		= $this->config->item('max_viewer_height',		'uploader_settings');
 		
 		// Load uploader
 		$this->load->library('upload', $config);
@@ -91,6 +93,22 @@ class Uploader extends CI_Controller {
 				
 				// Do resize
 				$this->image_lib->resize();
+			}
+
+			// See if image should be constrained in the TinyMCE editor/viewer
+			$result['viewer_width'] = $result['viewer_height'] = -1;
+			if ($conf['max_viewer_width'] > 0 and ($result['image_width'] > $conf['max_viewer_width']))
+			{
+				$result['viewer_width'] = $conf['max_viewer_width'];
+				$result['viewer_height'] = floor(($conf['max_viewer_width'] / $result['image_width']) * $result['image_height']);
+			}
+			if ($conf['max_viewer_height'] > 0 and ($result['viewer_height'] > $conf['max_viewer_height'] or $result['image_height'] > $conf['max_viewer_height']))
+			{
+				// this takes care of the case when both max_viewer_width and max_viewer_height are specified, and
+				//   the height still exceeds the constraint after adjusting the width
+				// as well as when only the max_viewer_height is specified
+				$result['viewer_width'] = floor(($conf['max_viewer_height'] / $result['image_height']) * $result['image_width']);
+				$result['viewer_height'] = $conf['max_viewer_height'];
 			}
 			
 			// Add our stuff

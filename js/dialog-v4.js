@@ -61,7 +61,14 @@ var jbImagesDialog = {
 			var w = this.getWin();
 			tinymce = w.tinymce;
 		
-			tinymce.EditorManager.activeEditor.insertContent('<img src="' + result.filename +'">');
+			var sizing = "";
+			if (result.viewer_width != -1) {
+				sizing += ' width="' + result.viewer_width + '"';
+			}
+			if (result.viewer_height != -1) {
+				sizing += ' height="' + result.viewer_height + '"';
+			}
+			tinymce.EditorManager.activeEditor.insertContent('<img src="' + result.filename +'"' + sizing + '>');
 			
 			this.close();
 		}

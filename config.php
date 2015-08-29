@@ -93,6 +93,30 @@
 
 /*-------------------------------------------------------------------
 | 
+| Maximum default image width in the TinyMCE editor. Set to `0` for no resizing:
+| 
+| $config['max_viewer_width'] = 0;
+| 
+| -------------------------------------------------------------------*/
+
+	
+	$config['max_viewer_width'] = 640;
+
+
+/*-------------------------------------------------------------------
+| 
+| Maximum default image height in the TinyMCE editor. Set to `0` for no resizing:
+| 
+| $config['max_viewer_height'] = 0;
+| 
+| -------------------------------------------------------------------*/
+
+	
+	$config['max_viewer_height'] = 0;
+
+
+/*-------------------------------------------------------------------
+| 
 | Allow script to resize image that exceeds maximum width or maximum height (or both)
 | If set to `TRUE`, image will be resized to fit maximum values (proportions are saved)
 | If set to `FALSE`, user will recieve an error message.
