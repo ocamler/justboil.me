@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-	<title>Upload an image</title>
+	<title>Upload image(s)</title>
 	<script type="text/javascript" src="js/dialog-v4.js"></script>
 	<link href="css/dialog-v4.css" rel="stylesheet" type="text/css">
 </head>
@@ -13,8 +13,12 @@
 		<div id="upload_in_progress" class="upload_infobar"><img src="img/spinner.gif" width="16" height="16" class="spinner">Upload in progress&hellip; <div id="upload_additional_info"></div></div>
 		<div id="upload_infobar" class="upload_infobar"></div>	
 		
+		<div id="div_target"><br />Drag-n-drop your files here...</div>
+		<span id="target_files"></span>
+
 		<p id="upload_form_container">
-			<input id="uploader" name="userfile" type="file" class="jbFileBox" onChange="document.upl.submit(); jbImagesDialog.inProgress();">
+			Or, click below to upload files the old-fashioned way:<br /><br />
+			<input id="uploader" name="multifile[]" type="file" class="jbFileBox" onChange="document.upl.submit(); jbImagesDialog.inProgress();" multiple>
 		</p>
 		
 		<p id="the_plugin_name"><a href="http://justboil.me/" target="_blank" title="JustBoil.me &mdash; a TinyMCE Images Upload Plugin">JustBoil.me Images Plugin</a></p>
@@ -23,5 +27,6 @@
 
 	<iframe id="upload_target" name="upload_target" src="ci/index.php?blank"></iframe>
 
+	<script type="text/javascript">jbImagesDialog.dndInit();</script>
 </body>
 </html>

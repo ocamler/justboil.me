@@ -46,12 +46,12 @@
 | 
 | Allowed image filetypes. Specifying something other, than image types will result in error. 
 | 
-| $config['allowed_types'] = 'gif|jpg|png';
+| $config['allowed_types'] = 'gif|jpg|jpeg|png';
 | 
 | -------------------------------------------------------------------*/
 
 	
-	$config['allowed_types'] = 'gif|jpg|png';
+	$config['allowed_types'] = 'gif|jpg|jpeg|png';
 
 
 /*-------------------------------------------------------------------

@@ -4,13 +4,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>JustBoil's Result Page</title>
 <script language="javascript" type="text/javascript">
-	window.parent.window.jbImagesDialog.uploadFinish({
-		filename:'<?php echo $file_name; ?>',
-		result: '<?php echo $result; ?>',
-		resultCode: '<?php echo $resultcode; ?>',
-		viewer_width: <?php echo $viewer_width; ?>,
-		viewer_height: <?php echo $viewer_height; ?>
-	});
+	window.parent.window.jbImagesDialog.uploadFinish(<?php echo json_encode($results); ?>);
 </script>
 <style type="text/css">
 	body {font-family: Courier, "Courier New", monospace; font-size:11px;}
@@ -19,7 +13,21 @@
 
 <body>
 
-Result: <?php echo $result; ?>
+Result: <?php
+$fail = false;
+foreach ($results as $result)
+{
+	if ($result['resultcode'] == 'failed') {
+		echo $result['result'];
+		$fail = true;
+		break;
+	}
+}
+if (!$fail and count($results))
+{
+	echo $results[0]['result']; 
+}
+?>
 
 </body>
 </html>

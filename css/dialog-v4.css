@@ -36,3 +36,17 @@ h2 {color:#666; visibility:hidden;}
 
 /* this class makes the upload script output visible */
 .upload_target_visible {width:100%!important; height:200px!important; border:1px solid #000!important; display:block!important}
+
+#upload_form_container {
+  font-size:10pt;
+}
+#div_target {
+  font-size:10pt;
+  width:100%;
+  height:50px;
+  border: 2px dashed #ccf;
+  text-align:center;
+}
+#div_target.hover {
+  border: 2px dashed #0c0 !important;
+}

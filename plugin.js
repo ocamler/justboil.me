@@ -15,10 +15,10 @@ tinymce.PluginManager.add('jbimages', function(editor, url) {
 	
 	function jbBox() {
 		editor.windowManager.open({
-			title: 'Upload an image',
+			title: 'Upload image(s)',
 			file : url + '/dialog-v4.htm',
-			width : 350,
-			height: 135,
+			width : 375,
+			height: 165,
 			buttons: [{
 				text: 'Upload',
 				classes:'widget btn primary first abs-layout-item',
@@ -34,7 +34,7 @@ tinymce.PluginManager.add('jbimages', function(editor, url) {
 	
 	// Add a button that opens a window
 	editor.addButton('jbimages', {
-		tooltip: 'Upload an image',
+		tooltip: 'Upload image(s)',
 		icon : 'image',
 		text: 'Upload',
 		onclick: jbBox
@@ -42,7 +42,7 @@ tinymce.PluginManager.add('jbimages', function(editor, url) {
 
 	// Adds a menu item to the tools menu
 	editor.addMenuItem('jbimages', {
-		text: 'Upload image',
+		text: 'Upload image(s)',
 		icon : 'image',
 		context: 'insert',
 		onclick: jbBox
